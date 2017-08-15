@@ -4,6 +4,11 @@
 
     <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
 
     <application
         android:allowBackup="true"
@@ -27,6 +32,9 @@
             android:name="tk.zacharywander.systemsswisgets.services.MusicService"
             android:exported="false" />
 
+        <service android:name=".services.TogglesService"
+            android:exported="false" />
+
         <receiver
             android:name=".widgets.Music"
             android:label="@string/music_label">
@@ -38,6 +46,19 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_info_music" />
+        </receiver>
+
+        <receiver
+            android:name=".widgets.Toggles"
+            android:label="@string/toggles_label">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_info_toggles" />
         </receiver>
     </application>
 

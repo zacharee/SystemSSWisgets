@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sound"
+    android:layout_width="@dimen/toggle_size"
+    android:layout_height="@dimen/toggle_size"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:src="@drawable/ic_volume_up_black_24dp"
+    android:tint="#fff"/>
