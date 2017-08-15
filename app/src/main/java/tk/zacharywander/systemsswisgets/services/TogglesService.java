@@ -18,8 +18,18 @@ import tk.zacharywander.systemsswisgets.widgets.Toggles;
 
 public class TogglesService extends IntentService
 {
+
+    private FlashlightController flashlightController;
+
     public TogglesService() {
         super("TogglesService");
+    }
+
+    @Override
+    public int onStartCommand(@Nullable Intent intent, int flags, int startId)
+    {
+        flashlightController = Toggles.controller != null ? Toggles.controller : new FlashlightController(this);
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
@@ -53,7 +63,6 @@ public class TogglesService extends IntentService
                         }
                         break;
                     case Values.FLASHLIGHT_ID:
-                        FlashlightController flashlightController = Toggles.controller;
                         flashlightController.setFlashlight(!flashlightController.isEnabled());
                         break;
                     case Values.BT_ID:
